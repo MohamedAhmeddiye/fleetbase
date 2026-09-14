@@ -108,7 +108,7 @@ services:
     build:
       context: .
       dockerfile: docker/httpd/Dockerfile
-    ports:
-      - "8080:80"
+    expose:
+      - "80"
     depends_on:
       - application
