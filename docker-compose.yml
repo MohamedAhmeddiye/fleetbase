@@ -11,8 +11,6 @@ services:
   database:
     image: mysql:8.0-oracle
     restart: unless-stopped
-    ports:
-      - "3306:3306"
     volumes:
       - "./docker/database/:/docker-entrypoint-initdb.d/"
       - "./docker/database/mysql:/var/lib/mysql"
@@ -29,8 +27,6 @@ services:
     image: socketcluster/socketcluster:v17.4.0
     platform: linux/amd64
     restart: unless-stopped
-    ports:
-      - "38000:8000"
     environment:
       SOCKETCLUSTER_WORKERS: 10
       SOCKETCLUSTER_BROKERS: 10
@@ -113,6 +109,6 @@ services:
       context: .
       dockerfile: docker/httpd/Dockerfile
     ports:
-      - "8000:80"
+      - "8080:80"
     depends_on:
       - application
